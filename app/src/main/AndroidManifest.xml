@@ -1,0 +1,51 @@
+<manifest
+    package="com.guster.androidgeofence"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon_ori"
+        android:label="@string/app_name"
+        android:theme="@style/MyTheme"
+        tools:replace="icon">
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/api_key"/>
+
+        <activity
+            android:name=".activity.GeofencingActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.GeofenceMapActivity"
+            android:label=""/>
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="Settings"/>
+
+        <receiver android:name=".receiver.MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.guster.experiment.ACTION_GEO_CHANGED"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
